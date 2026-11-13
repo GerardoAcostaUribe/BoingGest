@@ -1,0 +1,50 @@
+package Components;
+
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
+import javax.swing.JLabel;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.table.TableCellRenderer;
+
+public class EstadoUsuarioRenderer extends JLabel implements TableCellRenderer
+{
+    public EstadoUsuarioRenderer()
+    {
+        setOpaque(true);
+        setHorizontalAlignment(SwingConstants.CENTER);
+        setForeground(Color.WHITE);
+        setFont(new Font("Arial", Font.BOLD, 14));
+    }
+
+    @Override
+    public Component getTableCellRendererComponent(
+            JTable table,
+            Object value,
+            boolean isSelected,
+            boolean hasFocus,
+            int row,
+            int column)
+    {
+        String estado = value.toString();
+
+        setText(estado);
+
+        switch (estado)
+        {
+            case "Activo":
+                setBackground(new Color(40, 167, 69));
+                break;
+
+            case "Inactivo":
+                setBackground(new Color(220, 53, 69));
+                break;
+
+            default:
+                setBackground(Color.GRAY);
+        }
+
+        return this;
+    }
+}
